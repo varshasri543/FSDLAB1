@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Date Object Example</title>
+</head>
+<body>
+  <h2>JavaScript Date Object Example</h2>
+  <div id="output"></div>
+
+  <script>
+    // Create a new Date object (current date and time)
+    let now = new Date();
+
+    // Build output string
+    let result = "";
+    result += "Current Date and Time: " + now + "<br>";
+    result += "Year: " + now.getFullYear() + "<br>";
+    result += "Month (0-11): " + now.getMonth() + "<br>";
+    result += "Date: " + now.getDate() + "<br>";
+    result += "Day (0-6): " + now.getDay() + "<br>";
+    result += "Hours: " + now.getHours() + "<br>";
+    result += "Minutes: " + now.getMinutes() + "<br>";
+    result += "Seconds: " + now.getSeconds() + "<br>";
+    result += "Milliseconds: " + now.getMilliseconds() + "<br>";
+    result += "Timestamp (ms since Jan 1, 1970): " + now.getTime() + "<br><br>";
+
+    // Update date using set methods
+    now.setFullYear(2030);
+    now.setMonth(11);  // December
+    now.setDate(25);
+
+    result += "Updated Date (after set methods): " + now + "<br>";
+    result += "Formatted Date: " + now.toDateString() + "<br>";
+    result += "Formatted Time: " + now.toLocaleTimeString() + "<br>";
+
+    // Display in HTML
+    document.getElementById("output").innerHTML = result;
+  </script>
+</body>
+</html>

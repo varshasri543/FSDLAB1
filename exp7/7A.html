@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Document Object</title>
+</head>
+<body>
+    <h2 id="title">Original Title</h2>
+    <p id="info"></p>
+
+    <script>
+        document.getElementById("title").innerText = "Updated using document object!";
+        document.getElementById("info").innerHTML = "Page Title: " + document.title +
+            "<br>URL: " + document.URL +
+            "<br>Domain: " + document.domain;
+    </script>
+</body>
+</html>

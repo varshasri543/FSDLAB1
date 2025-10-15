@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Internal and External JS</title>
+
+    <!-- Internal JavaScript -->
+    <script>
+        function internalGreet() {
+            alert("Hello from internal JavaScript!");
+        }
+    </script>
+    function externalGreet() {
+    alert("Hello from external JavaScript!");
+}
+
+
+    <!-- Link to external JavaScript file -->
+    <script src="script.js"></script>
+</head>
+<body>
+    <h1>JavaScript Embedding</h1>
+    <button onclick="internalGreet()">Run Internal Script</button>
+    <button onclick="externalGreet()">Run External Script</button>
+</body>
+</html>

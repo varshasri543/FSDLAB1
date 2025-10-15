@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS Selector Types</title>
+    <style>
+        /* ---------- i. Simple Selectors ---------- */
+
+        /* Element Selector */
+        h1 {
+            color: darkblue;
+        }
+
+        /* ID Selector */
+        #intro {
+            font-style: italic;
+            color: darkgreen;
+        }
+
+        /* Class Selector */
+        .highlight {
+            background-color: yellow;
+            padding: 5px;
+        }
+
+        /* Group Selector */
+        h2, p, li {
+            font-family: Arial, sans-serif;
+        }
+
+        /* Universal Selector */
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* ---------- ii. Combinator Selectors ---------- */
+
+        /* Descendant Selector */
+        div p {
+            color: brown;
+        }
+
+        /* Child Selector */
+        ul > li {
+            color: purple;
+        }
+
+        /* Adjacent Sibling Selector */
+        h2 + p {
+            background-color: lightgray;
+        }
+
+        /* General Sibling Selector */
+        h3 ~ p {
+            font-size: 14px;
+        }
+
+        /* ---------- iii. Pseudo-class Selectors ---------- */
+
+        a:hover {
+            color: red;
+            text-decoration: underline;
+        }
+
+        li:first-child {
+            font-weight: bold;
+        }
+
+        input:focus {
+            border: 2px solid blue;
+        }
+
+        /* ---------- iv. Pseudo-element Selectors ---------- */
+
+        p::first-letter {
+            font-size: 200%;
+            color: red;
+        }
+
+        p::after {
+            content: " ✅";
+            color: green;
+        }
+
+        /* ---------- v. Attribute Selectors ---------- */
+
+        input[type="text"] {
+            background-color: #e0f7fa;
+        }
+
+        a[target="_blank"] {
+            color: orange;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Simple Selectors -->
+    <h1>CSS Selector Types</h1>
+    <p id="intro">This paragraph uses an ID selector.</p>
+    <p class="highlight">This uses a class selector.</p>
+    <h2>Grouped Selectors Example</h2>
+
+    <!-- Combinator Selectors -->
+    <div>
+        <p>This is a paragraph inside a div (descendant).</p>
+    </div>
+    <ul>
+        <li>Child Selector</li>
+        <li>Another List Item</li>
+    </ul>
+    <h2>Heading 2</h2>
+    <p>This is adjacent to h2 (adjacent sibling).</p>
+    <h3>Heading 3</h3>
+    <p>This follows h3 (general sibling).</p>
+    <p>Another general sibling of h3.</p>
+
+    <!-- Pseudo-class Selectors -->
+    <a href="#">Hover over this link</a><br>
+    <a href="https://example.com" target="_blank">External Link</a><br>
+
+    <form>
+        <input type="text" placeholder="Text input"><br>
+        <input type="password" placeholder="Password"><br>
+    </form>
+
+    <!-- Pseudo-element Selectors -->
+    <p>This paragraph starts with a styled first letter and ends with a checkmark.</p>
+
+</body>
+</html>

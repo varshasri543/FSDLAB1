@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Regex Object</title>
+</head>
+<body>
+    <h2>Regex Object Demo</h2>
+
+    <script>
+        let text = "The rain in Spain falls mainly in the plain.";
+        let pattern = /ain/g;
+        let matches = text.match(pattern);
+
+        document.write("Matches: " + matches + "<br>");
+        document.write("Total Matches: " + matches.length);
+    </script>
+</body>
+</html>
+

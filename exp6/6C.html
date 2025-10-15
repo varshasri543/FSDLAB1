@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Input Methods</title>
+</head>
+<body>
+    <h2>JavaScript Input Methods</h2>
+
+    <input type="text" id="textInput" placeholder="Enter something">
+    <button onclick="readInput()">Submit</button>
+    <p id="output"></p>
+
+    <script>
+        // 1. From prompt
+        let userInput = prompt("Enter your name:");
+        alert("You entered (via prompt): " + userInput);
+
+        // 2. From HTML input box
+        function readInput() {
+            let value = document.getElementById("textInput").value;
+            document.getElementById("output").innerText = "You entered (from input box): " + value;
+        }
+    </script>
+</body>
+</html>

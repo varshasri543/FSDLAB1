@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User-defined Object</title>
+</head>
+<body>
+    <h2>User-defined Object Demo</h2>
+    <pre id="output"></pre>
+
+    <script>
+        function Person(name, age) {
+            this.name = name;
+            this.age = age;
+
+            this.greet = function () {
+                return `Hello, my name is ${this.name} and I'm ${this.age} years old.`;
+            };
+
+            // Getter
+            this.getAge = function () {
+                return this.age;
+            };
+
+            // Setter
+            this.setAge = function (newAge) {
+                if (newAge > 0) {
+                    this.age = newAge;
+                }
+            };
+        }
+
+        let person1 = new Person("Alice", 25);
+        person1.setAge(30);
+
+        document.getElementById("output").innerText = person1.greet() + 
+            "\nAccessed Age: " + person1.getAge();
+    </script>
+</body>
+</html>
