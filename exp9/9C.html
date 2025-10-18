@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Registration Form with Validation</title>
+  <style>
+    /* Basic Reset and Styling */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fafafa;
+      padding: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+    }
+    .container {
+      background-color: white;
+      padding: 30px 40px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgb(0 0 0 / 0.1);
+      max-width: 400px;
+      width: 100%;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #333;
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 6px;
+      color: #555;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"] {
+      width: 100%;
+      padding: 10px 12px;
+      font-size: 16px;
+      border: 1.5px solid #ccc;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      transition: border-color 0.3s;
+    }
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="tel"]:focus {
+      border-color: #4CAF50;
+      outline: none;
+    }
+    .error {
+      color: #d93025;
+      font-size: 14px;
+      margin-top: -6px;
+      margin-bottom: 12px;
+    }
+    .success {
+      color: #2e7d32;
+      font-weight: bold;
+      font-size: 18px;
+      text-align: center;
+      margin-top: 20px;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      font-size: 18px;
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Registration Form</h1>
+    <form id="registrationForm" onsubmit="return validateForm()">
+     
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" placeholder="Start with letter, min 6 chars" />
+      <div id="nameError" class="error"></div>
+     
+      <label for="mobile">Mobile Number</label>
+      <input type="tel" id="mobile" name="mobile" placeholder="10 digit number" maxlength="10" />
+      <div id="mobileError" class="error"></div>
+     
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="example@domain.com" />
+      <div id="emailError" class="error"></div>
+     
+      <button type="submit">Register</button>
+     
+      <div id="successMessage" class="success"></div>
+    </form>
+  </div>
+
+  <script>
+    function validateForm() {
+      // Clear previous error and success messages
+      document.getElementById("nameError").innerText = "";
+      document.getElementById("mobileError").innerText = "";
+      document.getElementById("emailError").innerText = "";
+      document.getElementById("successMessage").innerText = "";
+
+      // Get values trimmed
+      const name = document.getElementById("name").value.trim();
+      const mobile = document.getElementById("mobile").value.trim();
+      const email = document.getElementById("email").value.trim();
+
+      let isValid = true;
+
+      // Name validation:
+      // Starts with alphabet, followed by alphanumeric, minimum length 6
+      const nameRegex = /^[A-Za-z][A-Za-z0-9]{5,}$/;
+      if (!nameRegex.test(name)) {
+        document.getElementById("nameError").innerText =
+          "Name must start with a letter and be at least 6 characters (letters and numbers only).";
+        isValid = false;
+      }
+
+      // Mobile validation: exactly 10 digits, numbers only
+      const mobileRegex = /^\d{10}$/;
+      if (!mobileRegex.test(mobile)) {
+        document.getElementById("mobileError").innerText =
+          "Mobile number must contain exactly 10 digits.";
+        isValid = false;
+      }
+
+      // Email validation: basic pattern to check xxxxx@xxxx.xxx
+      // This regex checks presence of one '@', no spaces, a dot, and domain extension length 2-6
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,6}$/;
+      if (!emailRegex.test(email)) {
+        document.getElementById("emailError").innerText =
+          "Please enter a valid email address (e.g., example@domain.com).";
+        isValid = false;
+      }
+
+      // If all valid, show success message
+      if (isValid) {
+        document.getElementById("successMessage").innerText = "Registration successful! 🎉";
+        // Optionally, clear form fields
+        // document.getElementById("registrationForm").reset();
+      }
+
+      return false;  // prevent form submission for demo
+    }
+  </script>
+
+</body>
+</html>
+

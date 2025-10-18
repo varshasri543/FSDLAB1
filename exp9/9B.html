@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Number Functions</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      max-width: 600px;
+    }
+    input, button {
+      padding: 10px;
+      margin: 8px 5px;
+      font-size: 16px;
+    }
+    #output {
+      margin-top: 20px;
+      padding: 15px;
+      background: #f2f2f2;
+      border-radius: 5px;
+      font-family: monospace;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Number Operations</h2>
+  <label for="numInput">Enter a number:</label><br>
+  <input type="number" id="numInput" min="0" placeholder="Enter a number" />
+
+  <div>
+    <button onclick="showFactorial()">Factorial</button>
+    <button onclick="showFibonacci()">Fibonacci</button>
+    <button onclick="showPrimes()">Prime</button>
+    <button onclick="checkPalindrome()">Palindrome</button>
+  </div>
+
+  <div id="output"></div>
+
+  <script>
+    function getInputValue() {
+      const value = parseInt(document.getElementById("numInput").value);
+      if (isNaN(value) || value < 0) {
+        alert("Please enter a valid non-negative number.");
+        return null;
+      }
+      return value;
+    }
+
+    function showFactorial() {
+      const num = getInputValue();
+      if (num === null) return;
+      let result = 1;
+      for (let i = 2; i <= num; i++) result *= i;
+      document.getElementById("output").innerText = `Factorial of ${num} is: ${result}`;
+    }
+
+    function showFibonacci() {
+      const num = getInputValue();
+      if (num === null) return;
+      let fib = [0];
+      let a = 0, b = 1;
+      while (b <= num) {
+        fib.push(b);
+        [a, b] = [b, a + b];
+      }
+      document.getElementById("output").innerText = `Fibonacci series up to ${num}:\n${fib.join(', ')}`;
+    }
+
+    function showPrimes() {
+      const num = getInputValue();
+      if (num === null) return;
+      let primes = [];
+      for (let i = 2; i <= num; i++) {
+        let isPrime = true;
+        for (let j = 2; j <= Math.sqrt(i); j++) {
+          if (i % j === 0) {
+            isPrime = false;
+            break;
+          }
+        }
+        if (isPrime) primes.push(i);
+      }
+      document.getElementById("output").innerText = `Prime numbers up to ${num}:\n${primes.join(', ')}`;
+    }
+
+    function checkPalindrome() {
+      const num = getInputValue();
+      if (num === null) return;
+      const str = num.toString();
+      const isPalin = str === str.split('').reverse().join('');
+      document.getElementById("output").innerText = `${num} is ${isPalin ? '' : 'not '}a palindrome.`;
+    }
+  </script>
+
+</body>
+</html>
+
